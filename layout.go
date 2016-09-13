@@ -12,10 +12,12 @@ const (
 	defaultLayout  = "layouts/layout.html"
 )
 
+// Default returns a Layout instance with default settings.
 func Default() *Layout {
 	return NewLayout(defaultBaseDir, defaultLayout)
 }
 
+// Layout is html/template wrapper with single layout file.
 type Layout struct {
 	baseDir   string
 	layout    string
@@ -23,6 +25,7 @@ type Layout struct {
 	mutex     *sync.RWMutex
 }
 
+// NewLayout returns a Layout instance with custom settings.
 func NewLayout(baseDir, layout string) *Layout {
 	return &Layout{
 		baseDir:   baseDir,
@@ -58,6 +61,7 @@ func (l *Layout) loadTemplate(name string) (*template.Template, error) {
 	return t, err
 }
 
+// Template returns a template.Template instance with template cache.
 func (l *Layout) Template(name string) (*template.Template, error) {
 	if t, ok := l.getTemplate(name); ok {
 		return t, nil
@@ -66,6 +70,7 @@ func (l *Layout) Template(name string) (*template.Template, error) {
 	return l.loadTemplate(name)
 }
 
+// Render returns a string to render template.
 func (l *Layout) Render(name string, data interface{}) (string, error) {
 	t, err := l.Template(name)
 	if err != nil {
