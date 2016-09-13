@@ -7,8 +7,13 @@ import (
 	"sync"
 )
 
+const (
+	defaultBaseDir = "templates"
+	defaultLayout  = "layouts/layout.html"
+)
+
 func Default() *Layout {
-	return NewLayout("templates", "layouts/layout.html")
+	return NewLayout(defaultBaseDir, defaultLayout)
 }
 
 type Layout struct {
