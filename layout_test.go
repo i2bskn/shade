@@ -8,7 +8,7 @@ import (
 )
 
 const (
-	testBaseDir  = "testdata"
+	testBaseDir  = "_example/templates"
 	testLayout   = "layout.html"
 	testTemplate = "index.html"
 )

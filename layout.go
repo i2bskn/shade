@@ -9,7 +9,7 @@ import (
 
 const (
 	defaultBaseDir = "templates"
-	defaultLayout  = "layouts/layout.html"
+	defaultLayout  = "layout.html"
 )
 
 // Default returns a Layout instance with default settings.
